@@ -1,0 +1,91 @@
+1. isGrounded에 대한 판정 고치기
+
+2. 애니메이터를 스크립트에 추가해서
+   걷고 있을 때, 걷는 애니메이션 나오고
+   점프 누를 때, 점프 애니메이션 나오고
+   슬라이딩 키 누를 때, 슬라이드 애니메이션이
+     나올 수 있도록 수정해주세요.
+
+1. 스크립트에 애니메이터 컴포넌트 연결
+
+2. 애니메이터의 트랜지션 condition 설계
+
+3. 조건문 등을 통해 입력 키에 따라
+   컨디션 설정, 애니메이션 진행을 처리합니다.
+
+
+폰트 하나 설정해서 TMP로 만들어서 적용하기
+
+
+1. 폰트 유니티에 추가하기
+
+2. Window -> TextMeshPro -> Font Asset Creator
+
+3. Atlas Resolution 8192 8192
+4. Generate Font Atlas
+
+5. Generation Settings 
+Atlas Population -> Dynamic
+Sampling Point Size -> 60 ~ 100
+
+Apply
+
+
+File -> Build Profiles
+
+SceneList 추가
+(후에 스크립트를 통한 씬 이동 기능에
+필수적인 사전 작업)
+
+Player Setting
+
+Default Icon 설정(Texture 2D)
+
+Splash Image(스플래툰)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

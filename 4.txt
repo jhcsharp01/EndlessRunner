@@ -1,0 +1,165 @@
+[태그  & 레이어]
+
+게임 오브젝트를 분류하고 관리하는 데 사용됩니다.
+
+태그 : 단일
+OnCollisionXXX
+OnTriggerXXX
+충돌 관련 코드를 짤 때 쉽게 종류를 설정하기 좋음
+
+
+레이어 : 그룹
+1. 특정 레이어를 제외하고 화면 렌더링(Culling Mask)
+
+2. 레이어 충돌 매트릭스 설정
+   -> 레이어를 기반으로 오브젝트 간의 충돌 처리
+        설정이 가능
+     ex) 플레이어와 총알은 서로 충돌하지 않는다.
+
+3. 렌더링되는 순서를 정할 수 있음(Sorting Layer)
+
+4. 가상의 빔을 쏴서 오브젝트의 충돌을 처리하는
+    레이 캐스팅에서 LayerMask를 통해 특정 레이어
+    와의 충돌을 판정할 때 사용
+PlayerController.cs 파일 생성
+
+
+Input.GetAxisRaw("Horizontal");
+키보드나 조이스틱의 입력 값을 반환하는 기능
+일정한 속도로 이동하는 기능을 구현할 때 사용하는 키
+입력 값에 따라 -1, 0, 1 을 return합니다.
+
+Input.GetAxis("Horizontal");
+레이싱 관련 게임 만들 때 쓰기 좋은 입력 값
+키보드나 조이스틱의 입력 값을 반환하는 기능
+스무스 필터링이 적용되어 있음.
+-1 ~ 1 사이의 값이 return 됨.
+
+자주 사용되는 Axies 값(Unity의 Input Manager)
+Horizontal <- 좌우(수평)
+Vertical <- 상하(수직)
+Jump <- 점프 키(스페이스)
+
+그 이외
+Input.GetKeyDown(KeyCode...);
+키보드 키를 입력했을 때 작업하는 기능
+
+Input.GetMouseButton(0)
+마우스 왼쪽 버튼
+Input.GetMouseButton(1)
+마우스 오른쪽 버튼
+Input.GetMouseButton(2)
+마우스 휠바
+
+CameraController.cs 생성
+Main Camera 오브젝트에 컴포넌트로 연결
+
+유니티에서 특정 범위 내에서 값을 제한하는 함수
+Mathf.Clamp(value, min, max);
+min보다 value가 작으면 min으로 처리
+max보다 value가 크면 max로 처리
+
+특정 원하는 범위를 넘지 못하도록 하는 설정
+
+Mathf.Clamp01(value);
+value를 최소 0 최대 1로 설정하는 코드
+
+유니티에서 Time 클래스가 제공해주는 프로퍼티 값
+Time.deltaTime
+-> 프레임 당 시간
+
+Time.timeSinceLevelLoad
+-> 씬이 로드된 이후로부터 흐른 시간
+주로 등장 씬에서 사용하거나
+혹은 특정 던전을 클리어하는데 걸린 시간 측정
+등에서 자주 사용됩니다.
+
+Time.time
+게임이 시작된 이후로부터 흐른 시간을 보여줌
+주로 UI Canvas의 Text 등을 이용해서 저 값을
+호출해 흐르는 시간을 체크하는 용도로 많이 사용
+
+Time.realtimeSinceStartUp
+게임이 시작된 이후로 흐른 시간을 보여줌.
+일시 정지하고 플레이를 했을 때
+그 일시 정지한 시간이 포함되서 계산됨.
+
+Time.timeScale
+이 값의 설정으로 시간을 더 빠르게 흐르게 하거나
+정지를 시킬 수 있음.
+일반적으로는 1로 설정되어있고
+이 값을 0으로 설정하면 멈추는 방식
+
+
+
+
+
+
+TileManager.cs 생성
+TileManager 오브젝트에 컴포넌트로 등록
+
+
+
+Animations 폴더 생성
+
+Create -> Animation -> Animator Controller
+PlayerController 생성
+Player에 연결
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
