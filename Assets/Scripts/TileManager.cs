@@ -5,7 +5,7 @@ using UnityEngine;
 //3. 기존에 있던 (이미 건넌) 타일을 제거합니다.
 //4. 월드에 타일의 개수가 균일하게 유지됩니다.
 
-
+//2025-05-07
 public class TileManager : MonoBehaviour
 {
     public GameObject[] tilePrefabs;                    //등록할 타일
