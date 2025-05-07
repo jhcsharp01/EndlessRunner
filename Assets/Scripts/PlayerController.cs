@@ -4,10 +4,12 @@ public class PlayerController : MonoBehaviour
 {
     CharacterController controller; //컴포넌트
 
-    [SerializeField] private Vector3 moveVector;              // 방향 벡터
-    [SerializeField] private float speed = 5.0f;              // 플레이어의 이동 속도
-    [SerializeField] private float vertical_velocity = 0.0f;  // 점프를 위한 수직 속도
-    [SerializeField] private float gravity = 12.0f;           // 중력 값
+    private Vector3 moveVector;                                 // 방향 벡터
+    private float vertical_velocity = 0.0f;                     // 점프를 위한 수직 속도
+    private float gravity = 12.0f;                              // 중력 값
+    
+    [SerializeField] private float speed = 5.0f;                // 플레이어의 이동 속도
+    [SerializeField] private float jump = 3.0f;                 // 플레이어의 점프 수치
 
     void Start()
     {
@@ -27,7 +29,18 @@ public class PlayerController : MonoBehaviour
         //땅에 닿아있을 경우 velocity 고정
         if(controller.isGrounded)
         {
-            vertical_velocity = 0.0f;
+            Debug.Log("컨트롤러가 땅에 닿았습니다.");
+
+
+
+
+            vertical_velocity = -0.5f;
+
+            //점프 기능 추가
+            if(Input.GetKeyDown(KeyCode.X))
+            {
+                vertical_velocity = jump;
+            }
         }
         else
         {
