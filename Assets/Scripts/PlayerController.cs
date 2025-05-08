@@ -10,6 +10,13 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private float speed = 5.0f;                // 플레이어의 이동 속도
     [SerializeField] private float jump = 3.0f;                 // 플레이어의 점프 수치
+    public void SetSpeed(float level)
+    {
+        speed += level;
+        Debug.Log("현재 스피드 : " + speed);
+    }
+
+    public float GetSpeed() => speed;
 
     void Start()
     {
@@ -24,16 +31,11 @@ public class PlayerController : MonoBehaviour
             controller.Move(Vector3.forward * speed * Time.deltaTime);
             return;
         }
-
         moveVector = Vector3.zero; //방향 벡터 값 리셋
         //땅에 닿아있을 경우 velocity 고정
         if(controller.isGrounded)
         {
             Debug.Log("컨트롤러가 땅에 닿았습니다.");
-
-
-
-
             vertical_velocity = -0.5f;
 
             //점프 기능 추가
