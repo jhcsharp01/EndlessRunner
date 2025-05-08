@@ -7800,7 +7800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 56336963}
-  isDead: 1
+  isDead: 0
   speed: 5
   jump: 4
 --- !u!137 &1642894976

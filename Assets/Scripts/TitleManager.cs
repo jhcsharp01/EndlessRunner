@@ -26,7 +26,6 @@ public class TitleManager : MonoBehaviour
         else
         {
             ControlKeyMenu.SetActive(true);
-
         }        
     }
 
