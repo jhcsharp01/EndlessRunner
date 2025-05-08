@@ -4,6 +4,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     CharacterController controller; //컴포넌트
+    public ScoreManager scoreManager; //스코어 매니저
+   
 
     private Vector3 moveVector;                                 // 방향 벡터
     private float vertical_velocity = 0.0f;                     // 점프를 위한 수직 속도
@@ -75,6 +77,7 @@ public class PlayerController : MonoBehaviour
         if(hit.transform.tag == "Obstacle")
         {
             OnDeath();
+            scoreManager.OnDead();
             //충돌하면 바로 죽는 이벤트로 진행 
         }
     }

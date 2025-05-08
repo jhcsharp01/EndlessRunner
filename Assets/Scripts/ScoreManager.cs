@@ -6,6 +6,7 @@ using System;
 public class ScoreManager : MonoBehaviour
 {
     public PlayerController playerController;
+    public DeadManager deadManager;   //죽음 매니저
 
     //점수
     //1. 인게임 내에서 간단하게 사용할거면 필드로 만든다.
@@ -52,8 +53,20 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        //최고 점수 갱신
-        HighScore.text = $"High Score : {PlayerPrefs.GetInt("HIGH_SCORE")}";
+        //HIGH_SCORE 키가 없다면, 키를 먼저 생성
+        if(PlayerPrefs.HasKey("HIGH_SCORE") == false)
+        {
+            Debug.Log("HIGH_SCORE 키가 갱신되었습니다.");
+            PlayerPrefs.SetInt("HIGH_SCORE", 0);
+        }
+        else
+        {
+            Debug.Log("키가 존재합니다!");
+        }
+
+            //최고 점수 갱신
+            HighScore.text = $"High Score : {PlayerPrefs.GetInt("HIGH_SCORE")}";
+
         SetTMP_Text();
     }
     //String Format $
@@ -80,6 +93,16 @@ public class ScoreManager : MonoBehaviour
         score += Time.deltaTime;
 
         scoreText.text = ((int)score).ToString();
+
+        //score가 하이스코어 값을 넘었을 경우라면 텍스트 변경
+        if(score > PlayerPrefs.GetInt("HIGH_SCORE"))
+        {
+            //해당 코드를 사용하면 계속 프립스 값이 설정되기 때문에 연출로 보여주고, Dead에서 설정 1번으로 처리
+            //PlayerPrefs.SetInt("HIGH_SCORE", (int)score);
+            //HighScore.text = $"High Score : {PlayerPrefs.GetInt("HIGH_SCORE")}"; 
+            HighScore.text = ((int)score).ToString();
+        }
+
     }
     private void LevelUP()
     {
@@ -96,5 +119,12 @@ public class ScoreManager : MonoBehaviour
         levelText.text = $"level :  {level}";
         perScoreText.text = $"Goal : {levelperscore: #,##0}";
         Player_Speed.text = $"Speed : {playerController.GetSpeed()}";
+    }
+
+    public  void OnDead()
+    {
+        DeadCheck = true;
+        //매니저에 점수 전달
+        deadManager.SetScoreText(score);
     }
 }
