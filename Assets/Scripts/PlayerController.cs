@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         //땅에 닿아있을 경우 velocity 고정
         if(controller.isGrounded)
         {
-            Debug.Log("컨트롤러가 땅에 닿았습니다.");
+            //Debug.Log("컨트롤러가 땅에 닿았습니다.");
             vertical_velocity = -0.5f;
 
             //점프 기능 추가
