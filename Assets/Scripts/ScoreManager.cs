@@ -44,9 +44,16 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text levelText;    //현재 레벨
     public TMP_Text perScoreText; //다음 레벨까지의 점수
     public TMP_Text Player_Speed; //플레이어의 이동 속도
+    public TMP_Text HighScore;
+
+    //죽음 상태 체크
+    [SerializeField] private bool DeadCheck = false;
+
 
     private void Start()
     {
+        //최고 점수 갱신
+        HighScore.text = $"High Score : {PlayerPrefs.GetInt("HIGH_SCORE")}";
         SetTMP_Text();
     }
     //String Format $
@@ -57,6 +64,14 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
+        //죽음 상태일 경우 스코어가 더이상 오르지 않습니다.
+        //플레이어와 UI에서 같은 조건으로 처리되고 있을 경우라면
+        //static 형태의 데이터로 처리하는 것도 괜찮습니다.
+        if (DeadCheck)
+        {
+            return;
+        }
+
         if(score >= levelperscore)
         {
             LevelUP();
