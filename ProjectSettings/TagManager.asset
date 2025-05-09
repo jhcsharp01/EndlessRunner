@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Stair
+  - Test
   layers:
   - Default
   - TransparentFX

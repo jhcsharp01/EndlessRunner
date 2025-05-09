@@ -36,4 +36,9 @@ public class TestController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Test")
+        Debug.Log("트리거 발생");
+    }
 }

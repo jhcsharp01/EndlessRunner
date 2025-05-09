@@ -8,6 +8,8 @@ public class ScoreManager : MonoBehaviour
     public PlayerController playerController;
     public DeadManager deadManager;   //죽음 매니저
 
+    public static ScoreManager instance;
+
     //점수
     //1. 인게임 내에서 간단하게 사용할거면 필드로 만든다.
     //2. 게임을 끄고 난 뒤에도 점수가 유지되야 하는 상황일 경우라면
@@ -30,6 +32,17 @@ public class ScoreManager : MonoBehaviour
     //                      적용합니다. 주로 맵 패턴 , 스크립트 대화 호출, 기본적인 데이터
     private float score = 0.0f;
 
+    public int Score { 
+        get 
+        {
+            return (int) score;
+        } 
+        set
+        {
+            value = (int) score;
+        }
+    }
+
     //점수에 따른 난이도 표현
     private int level = 1;
 
@@ -38,6 +51,8 @@ public class ScoreManager : MonoBehaviour
     
     //레벨 당 요구 점수
     private int levelperscore = 10;
+
+    public static int HIGH_SCORE = 0;
 
     //텍스트 UI
     public TMP_Text scoreText;
@@ -64,8 +79,8 @@ public class ScoreManager : MonoBehaviour
             Debug.Log("키가 존재합니다!");
         }
 
-            //최고 점수 갱신
-            HighScore.text = $"High Score : {PlayerPrefs.GetInt("HIGH_SCORE")}";
+        //최고 점수 갱신
+        HighScore.text = $"High Score : {PlayerPrefs.GetInt("HIGH_SCORE")}";
 
         SetTMP_Text();
     }
@@ -102,6 +117,10 @@ public class ScoreManager : MonoBehaviour
             //HighScore.text = $"High Score : {PlayerPrefs.GetInt("HIGH_SCORE")}"; 
             HighScore.text = ((int)score).ToString();
         }
+        else
+        {
+            HighScore.text = PlayerPrefs.GetInt("HIGH_SCORE").ToString();
+        }
 
     }
     private void LevelUP()
@@ -119,6 +138,7 @@ public class ScoreManager : MonoBehaviour
         levelText.text = $"level :  {level}";
         perScoreText.text = $"Goal : {levelperscore: #,##0}";
         Player_Speed.text = $"Speed : {playerController.GetSpeed()}";
+        
     }
 
     public  void OnDead()

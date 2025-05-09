@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     CharacterController controller; //컴포넌트
     public ScoreManager scoreManager; //스코어 매니저
-   
+    Animator animator;
 
     private Vector3 moveVector;                                 // 방향 벡터
     private float vertical_velocity = 0.0f;                     // 점프를 위한 수직 속도
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
     }
 
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
         //카메라 컨트롤러를 이용해 플레이어 움직임 전에 카메라 연출을 진행해보려 합니다.
         if(Time.timeSinceLevelLoad < CameraController.camara_animate_duration)
         {
-            controller.Move(Vector3.forward * speed * Time.deltaTime);
+            //controller.Move(Vector3.forward * speed * Time.deltaTime);
             return;
         }
 
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
         if (isDead)
             return;
 
+        animator.SetBool("isRun", true);
 
         moveVector = Vector3.zero; //방향 벡터 값 리셋
         //땅에 닿아있을 경우 velocity 고정
@@ -48,11 +50,25 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("컨트롤러가 땅에 닿았습니다.");
             vertical_velocity = -0.5f;
-
+            
             //점프 기능 추가
-            if(Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(KeyCode.X))
             {
                 vertical_velocity = jump;
+                animator.SetBool("isJump",true);
+            }
+            else
+            {
+                animator.SetBool("isJump", false);
+            }
+
+            if(Input.GetKeyDown(KeyCode.Z))
+            {
+                animator.SetBool("isSlide", true);
+            }
+            else if(Input.GetKeyUp(KeyCode.Z))
+            {
+                animator.SetBool("isSlide", false);
             }
         }
         else
@@ -68,6 +84,7 @@ public class PlayerController : MonoBehaviour
         moveVector.z = speed;
         //설정한 방향대로 이동 진행 
         controller.Move(moveVector * Time.deltaTime);
+        
     }
 
    
