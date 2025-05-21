@@ -1,0 +1,211 @@
+이미지에 대한 Inspector 설정
+Wrap Mode : 텍스처를 바둑판 식으로
+배열하는 경우에 텍스처가 동작하는 방법을
+선택합니다.
+
+Repeat : 텍스처를 반복합니다.
+Clamp : 텍스처의 모서리를 늘립니다.
+Mirror : 텍스처 미러링 반복 패턴 생성
+Mirror Once : 텍스처 1번 미러링
+Per-axis : 개별적 제어
+[레이아웃 그룹 특징]
+해당 컴포넌트를 가진 오브젝트의 자식
+오브젝트들은 이 컴포넌트에서 설정한
+값으로 정렬이 됩니다.
+
+유니티 레이아웃 그룹
+1. Horizontal Layout Group 수평
+2. Vertical Layout Group   수직
+3. Grid Layout Group 격자 무늬 배치
+
+유니티 레이아웃 요소
+layout element
+레이아웃 요소에 대한 최소 크기 선호 크기
+, 가변 크기들에 대한 설정을 따로 진행할 수 있습니다.
+
+유니티 피터
+1. Content size Fitter 콘텐츠 크기에 대한 피터
+   가로,세로에 대한 사이즈 설정을 진행할 수 있음.
+    Unconstrained : 레이아웃 요소에 기반하지 않음.
+    Min size : 레이아웃 요소의 최소 너비를 기반으로 설정
+    Preffered size :  레이아웃의 기본 너비를 기반으로 설정
+
+2. Aspect Ratio Fitter 종횡비에 대한  피터
+
+싱글톤 패턴(Singleton Pattern)
+
+프로그램에서 해당 객체는
+하나만 존재하고, 이 하나의 객체는
+다른 쪽에서 언제든 접근해서
+편하게 사용할 수 있습니다.
+
+만드는 방법
+
+public class 클래스명 
+{
+  public static 클래스명 Instance = null;
+
+  private void Awake()
+  {
+      if(Instance == null)
+      {
+         Instance = this;
+      }
+  } 
+}
+1. 자기 자신의 형태의 객체를 public static으로 만듭니다.
+public static으로 만들면  클래스명.Instance로  접근이
+가능합니다.
+
+
+오디오 소스
+
+Output : 따로 설정 안하면 씬에 있는
+오디오 리스너에 직접 출력됨.
+일반적으로는 Main Camera에 연결되어있음.
+
+추가적으로 오디오 믹서를 추가하는 것이
+가능합니다.
+[오디오 믹서 기능 추가 방법]
+Create -> Audio -> Audio Mixer
+Groups 추가 기능을 통해 BGM과 SFX등을
+관리할 수 있습니다.
+그룹 하나를 클릭 후 Volume 파라미터
+에서 오른쪽 버튼을 눌러 Expose 진행
+파라미터의 이름을 사용할 이름으로 변경합니다.
+
+Mute : 체크하면 음소거
+Bypass Effects : 오디오에 적용되어있는 필터 효과를
+                      키거나 끄는 기능
+Bypass Listener Effects : 리스너 효과 키고 끄는 도구
+Bypass Reverb Zone : 리버브 존을 키거나 끔.
+
+리버브 존 :  오디오 리스너의 위치에 따라
+오디오 클립을 왜곡하는 기능
+(동굴 사운드 같은 거 연출할 때 사용)
+
+Play On Awake : 게임 플레이하면 바로 실행
+
+Loop : 음악 반복 여부 체크
+
+Priority : 씬 안에 있는 모든 오디오 소스 중에서
+            우선순위를 결정합니다.
+            값이 낮을 수록 우선도가 높음.
+            가장 높은 값 0 
+            가장 하위 256
+Volume : 오디오 러스너로부터의 볼륨 수치
+Stereo Pan   : 	2D
+Spatial Blend :        3D 
+
+Volume RollOff : 사운드에 대한 판정 설정
+           Logarithmic : 오디오에 가까워지면
+           사운드 크고, 오브젝트로부터 멀어지면
+           소리가 바로바로 줄어듬.
+
+Linear : 멀어질수록 점점 작아집니다.
+Cusom RollOff : 그래프 설정대로 오디오 사운드 설정
+
+
+프로퍼티 vs 필드?
+정의 방식
+public int A {get; set;} <- 프로퍼티
+public int A;              <- 필드
+
+캡슐화 여부
+필드 : private 설정 해줘야 인스펙터에서 안보임.
+프로퍼티 :  따로 설정 없으면 안보임.
+
+내부 로직에 대한 제어 부분
+필드 : 따로 없음. (메소드 등을 통해 조작)
+프로퍼티 : get, set을 통해 제공
+
+
+C# 매개변수 한정자 out
+타입 앞에 붙습니다. ex) void Function(out int value);
+out 한정자가 붙은 매개변수는 참조로 전달이 됩니다.
+함수 내부에서 무조건 적으로 값을 설정해줘야 합니다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

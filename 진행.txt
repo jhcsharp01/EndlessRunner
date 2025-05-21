@@ -1,0 +1,112 @@
+1. 에셋 스토어 이동
+
+2. Texture 2D에 대한 설정
+Wrap Mode : Repeat
+
+3. Assets -> Materials
+  -> Background(Material)
+  -> Base Map (이미지 적용)
+
+4. 3D Object(Quad)
+   Background(Material) 연결
+   Background.cs 생성
+   Background.cs 컴포넌트로 연결
+
+이 스크립트를 통해 추가로 고려
+해볼만한 것
+1. StageManager 등을 만들어서
+특정 조건을 만족하면
+다음 스테이지로 넘어가고
+그 넘어가는 타이밍에 Background
+의 텍스처를 변경한다.
+
+남는 시간 동안 배경으로 사용할
+만한 이미지를 추가해보시기
+바랍니다.
+
+점수 매니저 기능 추가
+
+Create -> UI -> Text
+(TMP 쓸 사람은 TMP로)
+Anchor Preset (left-top)
+이름 : CurrentScore
+
+Create -> UI -> Image
+이름 : Score
+Anchor Preset (left-top)
+Color의 알파값을 0으로 설정
+
+Score
+ -> CurrentScore
+ -> HighScore
+
+Score에 Vertical Layout Group 추가
+
+캔버스의 이름을 ScoreManager로 변경
+ScoreManager 연결
+
+적을 잡을 때마다
+점수가 1점씩 추가될 수 있도록
+스크립트를 수정해주세요.
+
+
+
+
+효과음 작업
+1. Asset Store에서 적합한 사운드 다운
+
+2. Bullet - Audio Source 추가
+   Audio Resource 쪽에 Audio Clip 추가
+
+3. SoundManager 스크립트 생성
+
+
+
+
+4시 3분 시작
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
